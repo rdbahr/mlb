@@ -1,0 +1,65 @@
+{
+  "properties": {
+    "@timestamp": {
+      "type": "date"
+    },
+    "Attendance": {
+      "type": "double"
+    },
+    "ChampionshipLeverageIndex": {
+      "type": "double"
+    },
+    "Date": {
+      "type": "date",
+      "format": "iso8601"
+    },
+    "DayNight": {
+      "type": "keyword"
+    },
+    "Duration": {
+      "type": "keyword"
+    },
+    "GamesBack": {
+      "type": "keyword"
+    },
+    "Home_Away": {
+      "type": "keyword"
+    },
+    "Innings": {
+      "type": "double"
+    },
+    "Opponent": {
+      "type": "keyword"
+    },
+    "PitcherLoss": {
+      "type": "keyword"
+    },
+    "PitcherSave": {
+      "type": "keyword"
+    },
+    "PitcherWin": {
+      "type": "keyword"
+    },
+    "Rank": {
+      "type": "double"
+    },
+    "Runs": {
+      "type": "double"
+    },
+    "RunsAllowed": {
+      "type": "double"
+    },
+    "Streak": {
+      "type": "long"
+    },
+    "Team": {
+      "type": "keyword"
+    },
+    "W-L": {
+      "type": "keyword"
+    },
+    "WinLoss": {
+      "type": "keyword"
+    }
+  }
+}
