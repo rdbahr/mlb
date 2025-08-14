@@ -28,7 +28,9 @@ team_rec['Date'] = pd.to_datetime(team_rec['Date'], format='%A, %b %d %Y').dt.st
 
 # TO DO: Convert DataFrame to JSON docs
 
-#es.index(
-#    index='mlb_games',
-#    document=es_doc_json
-#)
+for hit in team_rec:
+    es.index(
+       index='mlb_games',
+        document=hit
+    )
+
