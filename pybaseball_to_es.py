@@ -14,13 +14,21 @@ es = Elasticsearch(
 #es.info()
 
 year = '2024'
-ari_rec = schedule_and_record(int(year), 'ARI')
+team = 'ARI'
 
-ari_rec['Date'] = ari_rec['Date'].astype(str) + ' ' + year
-ari_rec['Date'] = ari_rec['Date'].str.replace(r'\(\d\)\s', '', regex=True)
-ari_rec['Date'] = pd.to_datetime(ari_rec['Date'], format='%A, %b %d %Y').dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+team_rec = schedule_and_record(int(year), team)
 
-#f_name = 'ari_rec_' + year + '.csv'
-#ari_rec.to_csv(f_name, index=False)
+team_rec['Date'] = team_rec['Date'].astype(str) + ' ' + year
+team_rec['Date'] = team_rec['Date'].str.replace(r'\(\d\)\s', '', regex=True)
+team_rec['Date'] = pd.to_datetime(team_rec['Date'], format='%A, %b %d %Y').dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+
+# Write to csv
+#f_name = team + '_rec_' + year + '.csv'
+#team_rec.to_csv(f_name, index=False)
 
 # TO DO: Convert DataFrame to JSON docs
+
+#es.index(
+#    index='mlb_games',
+#    document=es_doc_json
+#)
