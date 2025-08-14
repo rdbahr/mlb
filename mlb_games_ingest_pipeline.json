@@ -1,0 +1,95 @@
+{
+  "description": "Ingest pipeline created by text structure finder",
+  "processors": [
+    {
+      "csv": {
+        "field": "message",
+        "target_fields": [
+          "Date",
+          "Team",
+          "Home_Away",
+          "Opponent",
+          "WinLoss",
+          "Runs",
+          "RunsAllowed",
+          "Innings",
+          "W-L",
+          "Rank",
+          "GamesBack",
+          "PitcherWin",
+          "PitcherLoss",
+          "PitcherSave",
+          "Duration",
+          "DayNight",
+          "Attendance",
+          "ChampionshipLeverageIndex",
+          "Streak",
+          "Orig_Scheduled"
+        ],
+        "ignore_missing": false
+      }
+    },
+    {
+      "date": {
+        "field": "Date",
+        "formats": [
+          "ISO8601"
+        ]
+      }
+    },
+    {
+      "convert": {
+        "field": "Attendance",
+        "type": "double",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "ChampionshipLeverageIndex",
+        "type": "double",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "Innings",
+        "type": "double",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "Rank",
+        "type": "double",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "Runs",
+        "type": "double",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "RunsAllowed",
+        "type": "double",
+        "ignore_missing": true
+      }
+    },
+    {
+      "convert": {
+        "field": "Streak",
+        "type": "long",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "message"
+      }
+    }
+  ]
+}
