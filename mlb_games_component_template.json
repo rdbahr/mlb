@@ -1,64 +1,96 @@
 {
   "properties": {
-    "@timestamp": {
-      "type": "date"
-    },
     "Attendance": {
       "type": "double"
-    },
-    "ChampionshipLeverageIndex": {
-      "type": "double"
-    },
-    "Date": {
-      "type": "date",
-      "format": "iso8601"
-    },
-    "DayNight": {
-      "type": "keyword"
-    },
-    "Duration": {
-      "type": "keyword"
-    },
-    "GamesBack": {
-      "type": "keyword"
-    },
-    "Home_Away": {
-      "type": "keyword"
     },
     "Innings": {
       "type": "double"
     },
-    "Opponent": {
+    "League": {
+      "type": "keyword"
+    },
+    "WinLoss": {
+      "type": "keyword"
+    },
+    "Streak": {
+      "type": "long"
+    },
+    "RunsAllowed": {
+      "coerce": true,
+      "index": true,
+      "ignore_malformed": false,
+      "store": false,
+      "type": "integer",
+      "doc_values": true
+    },
+    "GamesBack": {
+      "coerce": true,
+      "index": true,
+      "ignore_malformed": false,
+      "store": false,
+      "type": "short",
+      "doc_values": true
+    },
+    "Duration": {
       "type": "keyword"
     },
     "PitcherLoss": {
       "type": "keyword"
     },
-    "PitcherSave": {
-      "type": "keyword"
-    },
-    "PitcherWin": {
-      "type": "keyword"
-    },
     "Rank": {
+      "coerce": true,
+      "index": true,
+      "ignore_malformed": false,
+      "store": false,
+      "type": "integer",
+      "doc_values": true
+    },
+    "ChampionshipLeverageIndex": {
       "type": "double"
+    },
+    "Date": {
+      "format": "iso8601",
+      "type": "date"
     },
     "Runs": {
-      "type": "double"
+      "coerce": true,
+      "index": true,
+      "ignore_malformed": false,
+      "store": false,
+      "type": "integer",
+      "doc_values": true
     },
-    "RunsAllowed": {
-      "type": "double"
+    "Home_Away": {
+      "type": "keyword"
     },
-    "Streak": {
-      "type": "long"
+    "@timestamp": {
+      "type": "date"
     },
-    "Team": {
+    "PitcherSave": {
       "type": "keyword"
     },
     "W-L": {
       "type": "keyword"
     },
-    "WinLoss": {
+    "Opponent": {
+      "type": "keyword"
+    },
+    "OpponentDivision": {
+      "type": "keyword"
+    },
+    "OpponentLeague": {
+      "type": "keyword"
+    },
+    "Division": {
+      "type": "keyword"
+    },
+    "Team": {
+      "type": "keyword"
+    },
+    "PitcherWin": {
+      "type": "keyword"
+    },
+    "DayNight": {
       "type": "keyword"
     }
   }
