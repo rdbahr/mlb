@@ -10,10 +10,20 @@ import configparser
 config = configparser.ConfigParser()
 config.read('connect.ini')
 
+# CLOUD
+#es = Elasticsearch(
+#    cloud_id=config['ELASTIC']['cloud_id'],
+#    basic_auth=(config['ELASTIC']['user'], config['ELASTIC']['password'])
+#)
+
+# ON-PREM
 es = Elasticsearch(
-    cloud_id=config['ELASTIC']['cloud_id'],
-    basic_auth=(config['ELASTIC']['user'], config['ELASTIC']['password'])
+    config['ELASTIC']['ES_HOST'],
+    api_key=config['ELASTIC']['API_KEY']
 )
+
+# Test connection
+#es.info()
 
 ALE = pd.DataFrame({ 'Team': ['BAL', 'BOS', 'NYY', 'TBR', 'TOR'], 'League': 'AL', 'Division': 'ALE' })
 ALC = pd.DataFrame({ 'Team': ['CLE', 'CHW', 'DET', 'KCR', 'MIN'], 'League': 'AL', 'Division': 'ALC' })
