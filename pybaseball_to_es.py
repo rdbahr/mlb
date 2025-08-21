@@ -6,6 +6,7 @@ import re
 import os
 from elasticsearch import Elasticsearch, helpers
 import configparser
+import json
 
 config = configparser.ConfigParser()
 config.read('connect.ini')
@@ -24,6 +25,10 @@ es = Elasticsearch(
 
 # Test connection
 #es.info()
+
+# Load Component Template
+with open('mlb_games_component_template.json') as f:
+    mlb_g_ct = json.load(f)
 
 ALE = pd.DataFrame({ 'Team': ['BAL', 'BOS', 'NYY', 'TBR', 'TOR'], 'League': 'AL', 'Division': 'ALE' })
 ALC = pd.DataFrame({ 'Team': ['CLE', 'CHW', 'DET', 'KCR', 'MIN'], 'League': 'AL', 'Division': 'ALC' })
