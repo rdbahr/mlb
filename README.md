@@ -21,7 +21,7 @@ Information is pulled via the pybaseball library, using the schedule_and_record 
 
 # NOTE: 
 
-By default, external links are disabled by default (which is what the tema logos use)
+By default, external links are disabled by default (which is what the team logos use)
 Add this setting in the `docker-compose.yml`
 
 ```
