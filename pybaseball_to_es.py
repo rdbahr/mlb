@@ -30,6 +30,12 @@ es = Elasticsearch(
 with open('mlb_games_component_template.json') as f:
     mlb_g_ct = json.load(f)
 
+with open(mlb_games_index_template.json) as g:
+    mlb_g_it = json.load(g)
+
+es.cluster.put_component_template(name="mlb_games", body=mlb_g_ct)
+es.cluster.put_index_template(name="mlb_games" body=mlb_g_it)
+
 ALE = pd.DataFrame({ 'Team': ['BAL', 'BOS', 'NYY', 'TBR', 'TOR'], 'League': 'AL', 'Division': 'ALE' })
 ALC = pd.DataFrame({ 'Team': ['CLE', 'CHW', 'DET', 'KCR', 'MIN'], 'League': 'AL', 'Division': 'ALC' })
 ALW = pd.DataFrame({ 'Team': ['OAK', 'HOU', 'LAA', 'SEA', 'TEX'], 'League': 'AL', 'Division': 'ALW' })
