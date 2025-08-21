@@ -16,7 +16,7 @@ Information is pulled via the pybaseball library, using the schedule_and_record 
 ## So, how do I do this?
 - Once you've spun up your elasticsearch cluster, replace the values in `connect.ini` with the information from your `.env` file
 - Upload `mlb_games_dashboard.ndjson` to kibana (http://localhost:5601) by going to `Hamburger >> Stack Management >> Saved Objects >> Import`
-- Execute the script with `python3 ./pybaseball_to_es.py`
+- Execute the script with `python3 ./pybaseball_to_es.py <YEAR> <TEAM>`
   - If everything works correctly, the component_template, index_template, and index should all be created before data gets pulled from pybaseball
 
 # NOTE: 
