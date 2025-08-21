@@ -1,0 +1,11 @@
+{
+  "index_patterns": [ "mlb_games-*" ],
+  "template": {
+    "settings": {
+      "index": {
+        "mode": "standard"
+      }
+    }
+  },
+  "composed_of": [ "mlb_games" ]
+}
