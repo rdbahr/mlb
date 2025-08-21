@@ -19,6 +19,19 @@ Information is pulled via the pybaseball library, using the schedule_and_record 
 - Execute the script with `python3 ./pybaseball_to_es.py`
   - If everything works correctly, the component_template, index_template, and index should all be created before data gets pulled from pybaseball
 
+# NOTE: 
+
+By default, external links are disabled by default (which is what the tema logos use)
+Add this setting in the `docker-compose.yml`
+
+```
+kibana:
+  ...
+  environment:
+    - VIS_TYPE_VEGA_ENABLEEXTERNALURLS=TRUE
+```
+And then restart the container with `docker compose up -d`
+
 ![Preview of MLB Game Records Dashboard](mlb_game_records.png)
 
 ## Additional Links
