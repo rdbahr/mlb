@@ -1,3 +1,7 @@
+# Execute this script with args:
+# - python3 ./pybaseball_to_es.py 2024 ARI
+# - python3 ./pybaseball_to_es.py 2023 ALL
+
 from pybaseball import schedule_and_record
 import datetime as dt
 import pandas as pd
