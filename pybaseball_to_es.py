@@ -35,7 +35,7 @@ with open('mlb_games_index_template.json') as g:
 
 es.cluster.put_component_template(name="mlb_games", body=mlb_g_ct)
 es.indices.put_index_template(name="mlb_games", body=mlb_g_it)
-es.indices.create(index="mlb_games-000001")
+es.indices.create(index="mlb_games-000001") #Will error out if index already exists
 es.indices.put_alias(index="mlb_games-000001", name="mlb_games", is_write_index="true")
 
 ALE = pd.DataFrame({ 'Team': ['BAL', 'BOS', 'NYY', 'TBR', 'TOR'], 'League': 'AL', 'Division': 'ALE' })
@@ -79,8 +79,8 @@ for index, row in team_list.iterrows():
   team_rec['GamesBack'] = team_rec['GamesBack'].str.replace('Tied', '0.0')
   team_rec['GamesBack'] = team_rec['GamesBack'].str.replace(r'up\s?', '-', regex=True)
   team_rec['ChampionshipLeverageIndex'] = team_rec['ChampionshipLeverageIndex'].str.replace(r'(-+|\++)', '', regex=True)
-  f_name = team + '_rec_' + year + '.csv'
-  team_rec.to_csv(os.path.join('results', f_name), index=False)
+  #f_name = team + '_rec_' + year + '.csv'
+  #team_rec.to_csv(os.path.join('results', f_name), index=False)
   for index_rec, row_rec in team_rec.iterrows():
     row_rec_json = row_rec.to_json()
     es.index(
