@@ -10,7 +10,7 @@ import re
 import os
 from elasticsearch import Elasticsearch, helpers
 import configparser
-import json
+import hashlib
 
 config = configparser.ConfigParser()
 config.read('connect.ini')
@@ -52,11 +52,7 @@ NLW = pd.DataFrame({ 'Team': ['ARI', 'COL', 'LAD', 'SDP', 'SFG'], 'League': 'NL'
 ALL = pd.concat([ALE, ALC, ALW, NLE, NLC, NLW], ignore_index=True)
 ALLOpp = ALL.rename(columns={'Team': 'Opponent', 'League': 'OpponentLeague', 'Division': 'OpponentDivision'})
 
-if re.match("\d{4}", sys.argv[1]):
-  year = sys.argv[1]
-else:
-  year = '2024'
-  print("Year not passed or invalid, using " + year + '.')
+year = sys.argv[1]
 
 if sys.argv[2] == 'ALL':
   team_list = ALL
@@ -86,8 +82,11 @@ for index, row in team_list.iterrows():
   #f_name = team + '_rec_' + year + '.csv'
   #team_rec.to_csv(os.path.join('results', f_name), index=False)
   for index_rec, row_rec in team_rec.iterrows():
+    doc_id_str = str(index_rec) + row_rec.get('Date') + row_rec.get('Team') + row_rec.get('Home_Away') + row_rec.get('Opponent')
+    document_id = hashlib.sha256(doc_id_str.encode('utf-8')).hexdigest()
     row_rec_json = row_rec.to_json()
     es.index(
+      id=document_id,
       index='mlb_games',
       document=row_rec_json
     )
